@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="./login.css">
+    <title>Coding Tracker</title>
+</head>
+
+<body>
+    <header>Coding Tracker</header>
+
+    <main>
+        <form action="/" method="post">
+            <label for="inputDate">Date:</label>
+            <input type="date" name="date" id="inputDate" required> <br>
+
+            <label for="inputProblemName">Problem Name</label>
+            <input type="text" name="problemName" id="inputProblemName" required> <br>
+
+            <label for="inputProblemLink">Problem Link</label>
+            <input type="url" name="ProblemLink" id="inputProblemLink" required> <br>
+
+            <label for="inputPlatform">Platform</label>
+            <input type="text" name="platform" id="inputPlatform" required> <br>
+
+            <div class="checkboxes">
+                <input type="checkbox" name="tags" id="inputMath" value="Math">
+                <label for="inputMath">Math</label>
+                <input type="checkbox" name="tags" id="inputBitManipulation" value="Bit Manipulation">
+                <label for="inputBitManipulation">Bit Manipulation</label>
+                <input type="checkbox" name="tags" id="inputBacktracking" value="Backtracking">
+                <label for="inputBacktracking">Backtracking</label>
+                <input type="checkbox" name="tags" id="inputArrays" value="Arrays">
+                <label for="inputArrays">Arrays</label>
+                <input type="checkbox" name="tags" id="inputStrings" value="Strings">
+                <label for="inputStrings">Strings</label>
+                <input type="checkbox" name="tags" id="inputBinarySearch" value="Binary Search">
+                <label for="inputBinarySearch">Binary Search</label>
+                <input type="checkbox" name="tags" id="inputStacks" value="Stacks">
+                <label for="inputStacks">Stacks</label>
+                <input type="checkbox" name="tags" id="inputQueues" value="Queues">
+                <label for="inputQueues">Queues</label>
+                <input type="checkbox" name="tags" id="inputHashing" value="Hashing">
+                <label for="inputHashing">Hashing</label>
+                <input type="checkbox" name="tags" id="inputHeaps" value="Heaps">
+                <label for="inputHeaps">Heaps</label>
+                <input type="checkbox" name="tags" id="inputTrees" value="Trees">
+                <label for="inputTrees">Trees</label>
+                <input type="checkbox" name="tags" id="inputGreedy" value="Greedy">
+                <label for="inputGreedy">Greedy</label>
+                <input type="checkbox" name="tags" id="inputDynamicProgramming" value="Dynamic Programming">
+                <label for="inputDynamicProgramming">Dynamic Programming</label>
+                <input type="checkbox" name="tags" id="inputGraphs" value="Graphs">
+                <label for="inputGraphs">Graphs</label>
+            </div>
+            <br><br>
+
+            <button type="submit">SUBMIT</button>
+        </form>
+        <section id="output">
+            <table>
+                <thead>
+                    <th>S.No</th>
+                    <th>Problem</th>
+                    <th>Platform</th>
+                    <th>Tags</th>
+                    <th>Date Solved</th>
+                </thead>
+                <tbody>
+                    <% for(let i=0; i<problems.length;i++) { %>
+                        <tr>
+                            <td><%= i %></td>
+                            <td><a href=<%=problems[i].problemLink%>><%= problems[i].problemName %></a></td>
+                            <td><%= problems[i].platform %></td>
+                            <td><%= problems[i].tags %></td>
+                            <td><%= problems[i].date %></td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <h3><%= message %> </h3>
+    <footer>Copyright lawda</footer>
+</body>
+
+</html>
