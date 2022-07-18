@@ -3,14 +3,14 @@
 
 <head>
     <link rel="stylesheet" href="./login.css">
-    <title>Coding Tracker</title>
+    <title>Coding Trsdffacker</title>
 </head>
 
 <body>
     <header>Coding Tracker</header>
 
     <main>
-        <form action="/" method="post">
+        <form action="/" method="post" id="addingForm">
             <label for="inputDate">Date:</label>
             <input type="date" name="date" id="inputDate" required> <br>
 
@@ -18,10 +18,17 @@
             <input type="text" name="problemName" id="inputProblemName" required> <br>
 
             <label for="inputProblemLink">Problem Link</label>
-            <input type="url" name="ProblemLink" id="inputProblemLink" required> <br>
+            <input type="url" name="problemLink" id="inputProblemLink" required> <br>
 
-            <label for="inputPlatform">Platform</label>
-            <input type="text" name="platform" id="inputPlatform" required> <br>
+            <label for="inputPlatform">Choose Platform:</label>
+            <select name="platform" id="inputPlatform">
+                <option selected disabled hidden>Select</option>
+                <option value="LeetCode">LeetCode</option>
+                <option value="InterviewBit">InterviewBit</option>
+                <option value="CodeChef">Codechef</option>
+                <option value="CodeForces">CodeForeces</option>
+                <option value="GFG">GeeksForGeeks</option>
+            </select> <br>
 
             <div class="checkboxes">
                 <input type="checkbox" name="tags" id="inputMath" value="Math">
@@ -57,7 +64,53 @@
 
             <button type="submit">SUBMIT</button>
         </form>
-        <section id="output">
+        <section>
+            <form action="/display" method="post" id="fetchingForm">
+                <label for="date">Date</label>
+                <input type="date" name="date" id="date">
+
+                <label for="platform">Choose Platform:</label>
+                <select name="platform" id="platform">
+                    <option selected disabled hidden>Select</option>
+                    <option value="LeetCode">LeetCode</option>
+                    <option value="InterviewBit">InterviewBit</option>
+                    <option value="CodeChef">Codechef</option>
+                    <option value="CodeForces">CodeForeces</option>
+                    <option value="GFG">GeeksForGeeks</option>
+                </select>
+
+                <div class="checkboxes">
+                    <input type="checkbox" name="tags" id="math" value="Math">
+                    <label for="math">Math</label>
+                    <input type="checkbox" name="tags" id="bitManipulation" value="Bit Manipulation">
+                    <label for="bitManipulation">Bit Manipulation</label>
+                    <input type="checkbox" name="tags" id="bakctracking" value="Backtracking">
+                    <label for="bakctracking">Backtracking</label>
+                    <input type="checkbox" name="tags" id="arrays" value="Arrays">
+                    <label for="arrays">Arrays</label>
+                    <input type="checkbox" name="tags" id="strings" value="Strings">
+                    <label for="strings">Strings</label>
+                    <input type="checkbox" name="tags" id="binarySearch" value="Binary Search">
+                    <label for="binarySearch">Binary Search</label>
+                    <input type="checkbox" name="tags" id="stack" value="Stacks">
+                    <label for="stack">Stacks</label>
+                    <input type="checkbox" name="tags" id="queues" value="Queues">
+                    <label for="queues">Queues</label>
+                    <input type="checkbox" name="tags" id="hashing" value="Hashing">
+                    <label for="hashing">Hashing</label>
+                    <input type="checkbox" name="tags" id="heaps" value="Heaps">
+                    <label for="heaps">Heaps</label>
+                    <input type="checkbox" name="tags" id="trees" value="Trees">
+                    <label for="trees">Trees</label>
+                    <input type="checkbox" name="tags" id="greedy" value="Greedy">
+                    <label for="greedy">Greedy</label>
+                    <input type="checkbox" name="tags" id="dynamicProgramming" value="Dynamic Programming">
+                    <label for="dynamicProgramming">Dynamic Programming</label>
+                    <input type="checkbox" name="tags" id="graphs" value="Graphs">
+                    <label for="graphs">Graphs</label>
+                    <button type="submit">FETCH</button>
+                </div>
+            </form>
             <table>
                 <thead>
                     <th>S.No</th>
@@ -67,20 +120,27 @@
                     <th>Date Solved</th>
                 </thead>
                 <tbody>
-                    <% for(let i=0; i<problems.length;i++) { %>
+                    <% for(let i=0; i<problems.length; i++) { %>
                         <tr>
-                            <td><%= i %></td>
-                            <td><a href=<%=problems[i].problemLink%>><%= problems[i].problemName %></a></td>
-                            <td><%= problems[i].platform %></td>
-                            <td><%= problems[i].tags %></td>
-                            <td><%= problems[i].date %></td>
+                            <td>
+                                <%=i %>
+                            </td>
+                            <td><a href=<%=problems[i].problemLink%>><%=problems[i].problemName %></a></td>
+                            <td>
+                                <%=problems[i].platform %>
+                            </td>
+                            <td>
+                                <%=problems[i].tags %>
+                            </td>
+                            <td>
+                                <%=problems[i].date %>
+                            </td>
                         </tr>
-                    <% } %>
+                        <% } %>
                 </tbody>
             </table>
         </section>
     </main>
-    <h3><%= message %> </h3>
     <footer>Copyright lawda</footer>
 </body>
 

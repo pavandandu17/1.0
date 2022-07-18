@@ -54,8 +54,16 @@ app.post("/", function (req, res) {
     })
 });
 
-app.post("/display", function(req, res) {
-    Problem.find({ platform: "Leet Code" }, function (err, docs) {
+app.post("/display", function (req, res) {
+
+    let query = {};
+    if(req.body.date)
+        query.date = new Date(req.body.date);
+    if(req.body.platform)
+        query.platform = req.body.platform;
+    if(req.body.tags)
+        query.tags = req.body.tags;
+    Problem.find(query, function (err, docs) {
         if (!err) {
             res.render('home', { problems: docs, message: "" });
         } else {
